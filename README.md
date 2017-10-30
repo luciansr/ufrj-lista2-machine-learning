@@ -19,4 +19,10 @@ python3 -m pip install --upgrade pip
 python3 -m pip install jupyter -->
 3. numpy + scipy
 
-pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+Windows:
+
+    pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+
+Mac OS:
+
+    python3 -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
