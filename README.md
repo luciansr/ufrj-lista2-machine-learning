@@ -8,8 +8,14 @@ lista 2 - machine learning
 
 https://www.python.org/downloads/
 
-2. Jupyter Notebook
+2. scikit-learn
+
+http://scikit-learn.org/stable/install.html 
+
+
+<!-- 2. Jupyter Notebook
 
 python3 -m pip install --upgrade pip  
-python3 -m pip install jupyter
+python3 -m pip install jupyter -->
 
+pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
