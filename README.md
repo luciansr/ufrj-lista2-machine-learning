@@ -17,5 +17,6 @@ http://scikit-learn.org/stable/install.html
 
 python3 -m pip install --upgrade pip  
 python3 -m pip install jupyter -->
+3. numpy + scipy
 
 pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose

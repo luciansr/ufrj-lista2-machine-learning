@@ -40,7 +40,7 @@ def likelihoodNormal(median, variance, list):
     return part1 * part2
 
 
-def main():
+def questao2():
     file1a = 'file-l2-p-1a.txt'
     file1b = 'file-l2-p-1b.txt'
     fileEM = 'file-EM.txt'
@@ -102,4 +102,39 @@ def main():
     plt.show()
 
 
-main()
+def questao3():
+    areaImovel = np.array([
+        334,
+        438,
+        520,
+        605,
+        672,
+        767
+    ])
+
+    precoVenda = np.array([
+        39300,
+        60000,
+        68500,
+        86000,
+        113000,
+        133000
+    ])
+
+    m1 = np.polyfit(areaImovel, precoVenda, 1)
+    m2 = np.polyfit(areaImovel, precoVenda, 4)
+
+    print(m1)
+    print(m2)
+
+    fM1 = np.poly1d(m1)
+    fM2 = np.poly1d(m2)
+    print('')
+    print(fM1(848))
+    print(fM1(912))
+    print(fM2(848))
+    print(fM2(912))
+
+
+
+questao3()
