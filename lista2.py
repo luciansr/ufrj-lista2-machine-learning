@@ -76,8 +76,6 @@ def questao2():
     print('min 2b uniform ' + str(minf2b))
     print('max 2b uniform ' + str(maxf2b))
 
-  
-
     print('')
     print('2.3a')
     likelihood1Normal = likelihoodNormal(mediaf1a, varf1a, file1aList)
@@ -102,6 +100,27 @@ def questao2():
     plt.show()
 
 
+def erroQuadratico(x, y, f):
+    n = len(x)
+
+    somaDeErros = 0
+
+    index = 0
+    for xitem in x:
+        yitem = y[index]
+
+        erro = yitem - f(xitem)
+        erro2 = math.pow(erro, 2)
+
+        somaDeErros += erro2
+
+        ++index
+
+    erroQuadraticoResult = somaDeErros / n
+
+    return erroQuadraticoResult
+
+
 def questao3():
     areaImovel = np.array([
         334,
@@ -124,17 +143,27 @@ def questao3():
     m1 = np.polyfit(areaImovel, precoVenda, 1)
     m2 = np.polyfit(areaImovel, precoVenda, 4)
 
+    print('3.1')
     print(m1)
     print(m2)
 
     fM1 = np.poly1d(m1)
     fM2 = np.poly1d(m2)
-    print('')
+
+    print('3.2')
+
+    eqm1 = erroQuadratico(areaImovel, precoVenda, fM1)
+    eqm2 = erroQuadratico(areaImovel, precoVenda, fM2)
+    print(eqm1)
+    print(eqm2)
+
+    print(eqm1 / eqm2)
+
+    print('3.3')
     print(fM1(848))
     print(fM1(912))
     print(fM2(848))
     print(fM2(912))
-
 
 
 questao3()
