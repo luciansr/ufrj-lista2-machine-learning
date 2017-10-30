@@ -143,14 +143,14 @@ def questao3():
     m1 = np.polyfit(areaImovel, precoVenda, 1)
     m2 = np.polyfit(areaImovel, precoVenda, 4)
 
-    print('3.1')
+    print('\n3.1')
     print(m1)
     print(m2)
 
     fM1 = np.poly1d(m1)
     fM2 = np.poly1d(m2)
 
-    print('3.2')
+    print('\n3.2')
 
     eqm1 = erroQuadratico(areaImovel, precoVenda, fM1)
     eqm2 = erroQuadratico(areaImovel, precoVenda, fM2)
@@ -159,11 +159,30 @@ def questao3():
 
     print(eqm1 / eqm2)
 
-    print('3.3')
+    print('\n3.3')
     print(fM1(848))
     print(fM1(912))
     print(fM2(848))
     print(fM2(912))
+
+    print('\n3.4')
+
+    areaImovel2 = np.array([
+        848,
+        912
+    ])
+
+    precoVenda2 = np.array([
+        155900,
+        156000
+    ])
+
+    eqm12 = erroQuadratico(areaImovel2, precoVenda2, fM1)
+    eqm22 = erroQuadratico(areaImovel2, precoVenda2, fM2)
+    print(eqm12)
+    print(eqm22)
+
+    print(eqm12 / eqm22)
 
 
 questao3()
