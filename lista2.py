@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 import math
-
+import scipy.stats
 
 def getListFromFile(fileName):
     file_object = open(fileName, 'r')
@@ -43,11 +43,10 @@ def likelihoodNormal(median, variance, list):
 def questao2():
     file1a = 'file-l2-p-1a.txt'
     file1b = 'file-l2-p-1b.txt'
-    fileEM = 'file-EM.txt'
 
     file1aList = getListFromFile(file1a)
     file1bList = getListFromFile(file1b)
-    fileEMList = getListFromFile(fileEM)
+
 
     # questao 2 - 1
     print('normal 2.1.a')
@@ -184,5 +183,66 @@ def questao3():
 
     print(eqm12 / eqm22)
 
+def probabilityOfNormal(mean, var, x):
+    return scipy.stats.norm(mean, var).pdf(x)
 
-questao3()
+def expectatioMaximization(med1, var1, med2, var2, list):
+    items1 = []
+    items2 = []
+
+    for item in list:
+        prob1 = probabilityOfNormal(med1, var1, item)
+        prob2 = probabilityOfNormal(med2, var2, item)
+
+        if prob1 > prob2:
+            items1.append(item)
+        else:
+            items2.append(item)
+        
+    
+    med1 = getMedian(items1)
+    var1 = getVariance(items1)
+    med2 = getMedian(items2)
+    var2 = getVariance(items2)
+
+    return [med1, var1, med2, var2, len(items1), len(items2)]
+
+    
+
+def questao5():
+
+    fileEM = 'file-EM.txt'
+    fileEMList = getListFromFile(fileEM)
+
+    # hist, bins = np.histogram(fileEMList, bins=50)
+
+    # width = 0.7 * (bins[1] - bins[0])
+    # center = (bins[:-1] + bins[1:]) / 2
+    # plt.bar(center, hist, align='center', width=width)
+    # plt.show()
+
+    print('EM Algorithm')
+    iteration1 = expectatioMaximization(5, 1, 15, 3, fileEMList)
+    print(iteration1)
+    iteration2 = expectatioMaximization(iteration1[0], iteration1[1], iteration1[2], iteration1[3], fileEMList)
+    print(iteration2)
+    iteration3 = expectatioMaximization(iteration2[0], iteration2[1], iteration2[2], iteration2[3], fileEMList)
+    print(iteration3)
+    iteration4 = expectatioMaximization(iteration3[0], iteration3[1], iteration3[2], iteration3[3], fileEMList)
+    # print(iteration4)
+    # iteration4 = expectatioMaximization(iteration4[0], iteration4[1], iteration4[2], iteration4[3], fileEMList)
+    # print(iteration4)
+    # iteration4 = expectatioMaximization(iteration4[0], iteration4[1], iteration4[2], iteration4[3], fileEMList)
+    # print(iteration4)
+    # iteration4 = expectatioMaximization(iteration4[0], iteration4[1], iteration4[2], iteration4[3], fileEMList)
+    # print(iteration4)
+    # iteration4 = expectatioMaximization(iteration4[0], iteration4[1], iteration4[2], iteration4[3], fileEMList)
+    # print(iteration4)
+    # iteration4 = expectatioMaximization(iteration4[0], iteration4[1], iteration4[2], iteration4[3], fileEMList)
+    # print(iteration4)
+    # iteration4 = expectatioMaximization(iteration4[0], iteration4[1], iteration4[2], iteration4[3], fileEMList)
+    # print(iteration4)
+
+    print ('final med1 var1, med2 var2, pi1 pi2 ')
+
+questao5()
