@@ -26,3 +26,10 @@ Windows:
 Mac OS:
 
     python3 -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+
+## Run
+
+ Run lista2.py calling needed function 
+* questao2()
+* questao3()
+* questao5()
